@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-bladerf = { path = "../rust-bladerf" }
+bladerf = { git = "https://github.com/km4kfl/rust-bladerf" }
 num-complex = "0.4.6"
