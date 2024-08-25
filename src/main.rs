@@ -130,7 +130,7 @@ fn main() {
 
     let tx_handler = thread::spawn(move || {
         loop {
-            dev_arc_tx.sync_tx(&tx_data, None, 20000).expect("tx sync call");
+            dev_arc_tx.sync_tx(&tx_data, 20000).expect("tx sync call");
             match tx_rx.recv_timeout(Duration::from_millis(0)) {
                 Ok(_) => break,
                 Err(_) => (),
@@ -148,7 +148,7 @@ fn main() {
     }; samps);
 
     for _ in 0..100 {
-        dev_arc.sync_rx(&mut rx_data, None, 20000).expect("rx sync call");
+        dev_arc.sync_rx(&mut rx_data, 20000).expect("rx sync call");
         let rx_signal = convert_iqi16_to_iqf64(&rx_data);
         multiply_slice(&signal, &rx_signal, &mut tmp);
         let tmp_sum = sum_slice(&tmp);
